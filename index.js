@@ -1,9 +1,21 @@
 const newGameForm = document.querySelector('#new-game')
+const randomWordButton = document.querySelector('#random-word')
 
 const phraseholder = document.querySelector('#phraseholder')
 const optionsHolder = document.querySelector('#options')
 
 const params = new URLSearchParams(window.location.search)
+
+const randomWordAPIURL = 'https://random-word-api.herokuapp.com/word?key=4UTQK5O8'
+
+randomWordButton.addEventListener('click', event => {
+  event.preventDefault();
+  fetch(randomWordAPIURL)
+    .then(res => res.json())
+    .then(words => words[0])
+    .then(word => startGame(word.toUpperCase()))
+})
+
 let phrase = params.get('phrase') ? b64DecodeUnicode(params.get('phrase')) : undefined
 let guesses = []
 
@@ -50,7 +62,7 @@ const updatePhraseholder = (phrase, guesses) => {
 }
 
 const winGame = () => {
-//   alert('you won')
+  //   alert('you won')
 }
 
 const addLetterOption = (parentEl, eventHandler) => letter => {
@@ -64,13 +76,13 @@ const addLetterOption = (parentEl, eventHandler) => letter => {
 }
 
 if (!phrase) {
-    showEl(newGameForm)
-    hideEl(phraseholder)
-  
-    newGameForm.addEventListener('submit', event => {
-      event.preventDefault()
-      startGame(event.target.elements.phrase.value.toUpperCase())
-    })
-  } else {
-    startGame(phrase)
-  }
+  showEl(newGameForm)
+  hideEl(phraseholder)
+
+  newGameForm.addEventListener('submit', event => {
+    event.preventDefault()
+    startGame(event.target.elements.phrase.value.toUpperCase())
+  })
+} else {
+  startGame(phrase)
+}
