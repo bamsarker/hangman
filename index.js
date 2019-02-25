@@ -50,7 +50,7 @@ const updatePhraseholder = (phrase, guesses) => {
   const displayString = phrase
     .split('')
     .map(char => {
-      if (char === ' ' || guesses.includes(char)) return char
+      if (guesses.includes(char) || !letterOptions.includes(char)) return char
       return '_'
     })
     .join('')
