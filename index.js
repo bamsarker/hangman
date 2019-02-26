@@ -3,6 +3,8 @@ const randomWordButton = document.querySelector('#random-word')
 
 const phraseholder = document.querySelector('#phraseholder')
 const optionsHolder = document.querySelector('#options')
+const playAgainHolder = document.querySelector('#play-again')
+const playAgainButton = document.querySelector('#play-again-button')
 
 const params = new URLSearchParams(window.location.search)
 
@@ -21,7 +23,7 @@ let guesses = []
 
 const startGame = newPhrase => {
   phrase = newPhrase
-  hideEl(newGameForm)
+  hideEl(newGameForm, playAgainHolder)
   showEl(phraseholder)
   updatePhraseholder(phrase, guesses)
 
@@ -62,7 +64,8 @@ const updatePhraseholder = (phrase, guesses) => {
 }
 
 const winGame = () => {
-  //   alert('you won')
+  hideEl(optionsHolder)
+  showEl(playAgainHolder)
 }
 
 const addLetterOption = (parentEl, eventHandler) => letter => {
@@ -77,7 +80,7 @@ const addLetterOption = (parentEl, eventHandler) => letter => {
 
 if (!phrase) {
   showEl(newGameForm)
-  hideEl(phraseholder)
+  hideEl(phraseholder, playAgainHolder)
 
   newGameForm.addEventListener('submit', event => {
     event.preventDefault()

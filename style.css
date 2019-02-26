@@ -101,3 +101,7 @@ form > p {
   margin: auto;
   font-size: 1.5rem;
 }
+
+#play-again {
+  min-height: 10rem;
+}
