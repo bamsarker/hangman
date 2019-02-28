@@ -104,4 +104,9 @@ form > p {
 
 #play-again {
   min-height: 10rem;
+  display: flex;
+}
+
+#play-again-button {
+    margin: auto;
 }
