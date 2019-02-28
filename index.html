@@ -18,22 +18,30 @@
 </head>
 
 <body>
-  <noscript>Soz, you need JS for this</noscript>
-  <nav><a href='.'>hangman</a></nav>
-  <main>
-    <div class="centred">
-      <form id="new-game" autocomplete="off">
-        <input type="text" placeholder="Word or phrase" name="phrase" />
-        <input type="submit" value="Start game" />
-      </form>
-      <h2 id="phraseholder">
-        </h3>
-        <div id="options"></div>
-        <div id="play-again"><button onclick="window.location = window.location.origin + window.location.pathname"
-            id="play-again-button">Play
-            again</button></div>
-    </div>
-  </main>
+    <noscript>Soz, you need JS for this</noscript>
+    <nav><a href='.'>hangman</a></nav>
+    <main>
+        <div class="centred">
+            <form id="new-game" autocomplete="off">
+                <input type="text" placeholder="Word or phrase" name="phrase" />
+                <input type="submit" value="Start game" />
+            </form>
+            <h2 id="phraseholder"></h2>
+            <div id="options"></div>
+            <div id="play-again">
+                <button onclick="window.location = window.location.origin + window.location.pathname"
+                id="play-again-button">Play
+                again</button>
+            </div>
+        </div>
+    </main>
+    <script>
+        if('serviceWorker' in navigator) {
+            navigator.serviceWorker
+                .register('./sw.js')
+                .then(function() { console.log("Service Worker Registered"); });
+        }
+    </script>
 </body>
 
 </html>
