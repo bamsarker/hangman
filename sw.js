@@ -2,11 +2,10 @@ self.addEventListener('install', function(e) {
   e.waitUntil(
     caches.open('hangman').then(function(cache) {
       return cache.addAll([
-        '/',
-        '/index.html',
-        '/style.css',
-        '/index.js',
-        '/utils.js'
+        './index.html',
+        './style.css',
+        './index.js',
+        './utils.js'
       ])
     })
   )
