@@ -2,6 +2,16 @@ body {
   margin: 0;
   font-family: 'IBM Plex Mono', sans-serif;
 }
+
+textarea,
+input.text,
+input[type="text"],
+input[type="button"],
+input[type="submit"],
+.input-checkbox {
+-webkit-appearance: none;
+}
+
 nav {
   background: #90d1bb;
   text-align: center;
@@ -11,7 +21,10 @@ nav {
 
 main {
   display: flex;
-  min-height: calc(100vh - 4rem);
+  max-width: 100vw;
+
+  min-height: calc(100vh - 4rem); /* Fallback for browsers that do not support Custom Properties */
+  min-height: calc(calc(var(--vh, 1vh) * 100) - 4rem);
 }
 
 .centred {
@@ -23,6 +36,7 @@ main {
 
 button,
 input[type='submit'] {
+  -webkit-appearance: none;
   background: white;
   border: 0.1rem solid #b3b3b3;
   border-radius: 0.5rem;
@@ -32,6 +46,8 @@ input[type='submit'] {
 
 input[type='submit'] {
   margin-top: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 button:hover,
@@ -49,11 +65,11 @@ form {
   display: flex;
   flex-direction: column;
   margin: auto;
+  max-width: 100vw;
 }
 
 input[type='text'] {
-  width: 23rem;
-  max-width: 97vw;
+  margin: 0 0.5rem;
   font-size: 2rem;
   font-family: 'IBM Plex Mono', sans-serif;
   text-align: center;
@@ -89,7 +105,8 @@ h2 {
   text-align: center;
   height: 3rem;
   margin: auto;
-  margin-top: 0.5rem;
+  margin-top: 0.25rem;
+  padding: 0;
 }
 
 a {

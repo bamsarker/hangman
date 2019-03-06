@@ -7,6 +7,14 @@ const playAgainButton = document.querySelector('#play-again-button')
 
 const params = new URLSearchParams(window.location.search)
 
+const fixVHFunkiness = () => {
+  // We execute the same script as before
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+fixVHFunkiness()
+window.addEventListener('resize', fixVHFunkiness);
+
 let phrase = params.get('phrase') ? b64DecodeUnicode(params.get('phrase')) : undefined
 let guesses = []
 
