@@ -61,6 +61,12 @@ button:disabled {
   color: rgb(202, 202, 202);
 }
 
+
+button:disabled.wrong {
+  background: rgb(255, 241, 241);
+  color: rgb(199, 167, 167);
+}
+
 form {
   display: flex;
   flex-direction: column;

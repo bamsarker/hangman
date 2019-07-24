@@ -30,6 +30,7 @@ const startGame = newPhrase => {
     addLetterOption(optionsHolder, letter => {
       guesses.push(letter)
       updatePhraseholder(phrase, guesses)
+      return phrase.split('').includes(letter)
     })
   )
 }
@@ -70,7 +71,9 @@ const addLetterOption = (parentEl, eventHandler) => letter => {
   button.innerText = letter
   button.addEventListener('click', () => {
     button.disabled = true
-    eventHandler(letter)
+    if (!eventHandler(letter)) {
+      button.classList.add('wrong')
+    }
   })
   parentEl.appendChild(button)
 }
